@@ -17,33 +17,7 @@ function DtsTemplateSelect() {
     setIsOptionSelected(true);
   };
   
-  function listDtsTemplateVOs() {
-    const configParameters: ConfigurationParameters = {
-      headers: {
-        'Authorization': 'Bearer ' + auth.user?.access_token ,
-        
-      },
-      basePath: 'http://localhost:2601/',
-    };
-    
   
-    const config = new Configuration(configParameters);
-    const api = new DtsTemplateResourceApi(config);
-    
-    
-    api.dtstListPost({}).then((resp) => setDtsTemplateVOs(resp));
-  }
-
-   
-  useEffect(() => {
-    console.log("going here " + auth.isAuthenticated);
-    if (auth.isAuthenticated) {
-      
-      listDtsTemplateVOs();
-    }
-    
-
-}, [auth]);
 
   if (auth.isAuthenticated) {
     return (
